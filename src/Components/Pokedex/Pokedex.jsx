@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Search from '../Search/Search'
 import Pokemonlist from '../Pokemon list/Pokemonlist'
 import Topbtn from '../Topbtn'
+import PokemonDetails from '../PokemonDetails'
 
 export default function Pokedex() {
+
+  const [searchTerm, setSearchTerm] = useState("")
   return (
     <>
    
-      <div className='flex flex-col items-center justify-center bg-[rgba(6,_2,_143,_0.2)]'>
+      <div className='flex flex-col items-center justify-center '>
         <h1 className='text-4xl tracking-[10px] font-serif mt-5 font-extrabold '>POKEDEX</h1>
-        <Search />
-        <Pokemonlist />
+        <Search updateSearchTerm = {setSearchTerm}  />
+        {searchTerm ? <PokemonDetails PokemonNAme={{searchTerm}} /> :  <Pokemonlist />}
+       
         <Topbtn />
+       
       </div>
     
     </>

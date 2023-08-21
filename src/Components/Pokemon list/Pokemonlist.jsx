@@ -1,46 +1,18 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Pokemon from "../Pokemon/Pokemon";
+import usePokemonList from "../hokes/usePokemonList";
+import { useEffect } from 'react';
 export default function Pokemonlist() {
-  const defult_url = "https://pokeapi.co/api/v2/pokemon";
-const [pokemonListState, setPokemonState] = useState({
-
-pokemonList:[],
-pokedexUrl:defult_url,
-nextUrl: defult_url,
-preUrl: defult_url
-})
-  async function DataforPokemon() {
-    const response = await axios.get(pokemonListState.pokedexUrl ? pokemonListState.pokedexUrl : defult_url);
-    const pokeResult = response.data.results;
-    const pokemonlist = pokeResult.map((pokemonurl) =>
-      axios.get(pokemonurl.url)
-    );
-    const pokemonlistData = await axios.all(pokemonlist);
-    const pokemonFinalList = pokemonlistData.map((pokemonData) => {
-      const pokemon = pokemonData.data;
-      return {
-        id: pokemon.id,
-        name: pokemon.name,
-        imageURL: pokemon.sprites.other.dream_world.front_default,
-        types: pokemon.types[0].type.name,
-        weight: pokemon.weight,
-        move1: Object.values(pokemon.moves)[0].move.name,
-        move2: Object.values(pokemon.moves)[1].move.name,
-        move3: Object.values(pokemon.moves)[2].move.name,
-        move4: Object.values(pokemon.moves)[3].move.name,
-        height: pokemon.height,
-      };
-    });
-    setPokemonState({...pokemonListState, pokemonList:pokemonFinalList,nextUrl: response.data.next, preUrl:response.data.previous});
-  }
-
   useEffect(() => {
-    DataforPokemon();
-  }, [pokemonListState.pokedexUrl]);
+    AOS.init();
+  }, [])
+  const defult_url = "https://pokeapi.co/api/v2/pokemon";
+  const [pokemonListState, setPokemonState] = usePokemonList(defult_url)
+ 
   return (
     <div className="text-center ">
-      <h1 className="text-3xl font-semibold mt-5 mb-5 font-serif underline tracking-[5px]">
+      <h1 className="text-3xl font-semibold mt-5 mb-5 font-serif underline tracking-[5px] bg-[rgba(6,_2,_143,_0.2)]'">
         Pokemon List
       </h1>
       <div className="flex items-center justify-around gap-12 mb-12 mt-12">
@@ -57,7 +29,7 @@ preUrl: defult_url
           Next &#8594;
         </button>
       </div>
-      <div className="flex flex-wrap items-center justify-center ">
+      <div className="flex flex-wrap items-center justify-center " data-aos="fade-left" data-aos-duration = "1200">
         {pokemonListState.pokemonList.map((pokemon) => (
           <Pokemon
             name={pokemon.name}
