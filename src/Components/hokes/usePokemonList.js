@@ -1,6 +1,3 @@
-
-
-
 import  { useEffect, useState } from "react";
 import DataforPokemon from "../../utils/DataforPokemon";
 export default function usePokemonList(defult_url) {

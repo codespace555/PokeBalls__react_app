@@ -1,6 +1,8 @@
 import React from 'react'
+import useDebouncing from '../hokes/useDebouncing';
 
 export default function Search({updateSearchTerm}) {
+  const debounceUpdateSearch = useDebouncing((e) => updateSearchTerm(e.target.value));
   return (
     <>
       <div>
@@ -9,7 +11,7 @@ export default function Search({updateSearchTerm}) {
         id= "search_pokemon"
          type="text" placeholder='Which Pokemon your are looking for'
          
-         onChange={(e) => updateSearchTerm(e.target.value)}
+         onChange={debounceUpdateSearch }
          
          
          />

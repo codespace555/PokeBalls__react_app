@@ -2,11 +2,13 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Pokemon from "../Pokemon/Pokemon";
 import usePokemonList from "../hokes/usePokemonList";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 export default function Pokemonlist() {
   useEffect(() => {
     AOS.init();
   }, [])
+
+
   const defult_url = "https://pokeapi.co/api/v2/pokemon";
   const [pokemonListState, setPokemonState] = usePokemonList(defult_url)
  
@@ -29,6 +31,7 @@ export default function Pokemonlist() {
           Next &#8594;
         </button>
       </div>
+      {/* pokemon list */}
       <div className="flex flex-wrap items-center justify-center " data-aos="fade-left" data-aos-duration = "1200">
         {pokemonListState.pokemonList.map((pokemon) => (
           <Pokemon

@@ -11,7 +11,7 @@ function App() {
 
 
   return (
-    <div className="bg-[rgba(6,_2,_143,_0.2)] h-auto ">
+    <div className="h-auto ">
     <Routes>
       <Route path="/" element={<Pokedex />} />
       <Route path="/pokemon/:id" element={<PokemonDetails />} />
