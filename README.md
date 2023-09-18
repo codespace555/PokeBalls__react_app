@@ -1,6 +1,6 @@
 # PokeBalls React App
 
-![PokeBalls React App Screenshot](screenshot.png)
+![PokeBalls React App Screenshot](first project/Screenshot 2023-09-18 204000.png)
 
 ## Description
 
