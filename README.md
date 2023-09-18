@@ -1,6 +1,6 @@
 # PokeBalls React App
 
-![PokeBalls React App Screenshot](https://github.com/codespace555/firstproject/Screenshot2023-09-18204000.png)
+![PokeBalls React App Screenshot](https://github.com/codespace555/codespaces555/blob/995086ffd91bfd89f3f6cadd30ec1f998ad9d8de/first%20project/Screenshot%202023-09-18%20204000.png)
 
 ## Description
 
